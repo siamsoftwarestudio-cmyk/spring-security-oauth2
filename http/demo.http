@@ -1,0 +1,48 @@
+###
+GET http://localhost:8081/
+
+###
+GET http://localhost:8081/oauth2/authorization/google
+
+###
+POST http://localhost:8081/api/orders
+Cookie: JSESSIONID={{sessionId}}
+Content-Type: application/json
+
+{
+  "product": "Laptop",
+  "quantity": 1,
+  "price": 1200.00
+}
+
+###
+GET http://localhost:8081/api/orders
+Cookie: JSESSIONID={{sessionId}}
+
+###
+GET http://localhost:8081/api/orders/1
+Cookie: JSESSIONID={{sessionId}}
+
+###
+PUT http://localhost:8081/api/orders/1
+Cookie: JSESSIONID={{sessionId}}
+Content-Type: application/json
+
+{
+  "product": "Laptop Pro",
+  "quantity": 2,
+  "price": 1500.00
+}
+
+###
+PUT http://localhost:8081/api/orders/1/status
+Cookie: JSESSIONID={{sessionId}}
+Content-Type: application/json
+
+{
+  "status": "PAID"
+}
+
+###
+DELETE http://localhost:8081/api/orders/1
+Cookie: JSESSIONID={{sessionId}}
